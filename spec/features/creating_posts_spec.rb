@@ -10,4 +10,12 @@ feature 'Creating posts' do
 		expect(page).to have_content("#coffeetime")
 		expect(page).to have_css("img[src*='coffee.jpeg']")
 	end
+
+	scenario 'does not create a post' do
+		visit '/'
+		click_link 'New Post'
+		fill_in 'Caption', with: "literally, just YOLO"
+		click_button 'Create Post'
+		expect(page).to have_content("'Create Post' Aborted, No Image Found!")
+	end
 end
