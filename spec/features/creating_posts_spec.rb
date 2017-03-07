@@ -16,6 +16,6 @@ feature 'Creating posts' do
 		click_link 'New Post'
 		fill_in 'Caption', with: "literally, just YOLO"
 		click_button 'Create Post'
-		expect(page).to have_content("'Create Post' Aborted, No Image Found!")
+		expect(page).to have_content("Image Required")
 	end
 end
