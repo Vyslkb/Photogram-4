@@ -1,5 +1,13 @@
-= image_tag @post.image.url(:medium)
-= @post.caption
-
-= link_to('Edit Post', edit_post_path)
-= link_to('Back to Index Page', posts_path)
+.posts-wrapper.row
+  .post
+    .post-head
+      .name
+        Ben Walker
+    .image.center-block
+      =image_tag @post.image.url(:medium)
+    %p.caption
+      =@post.caption
+    .text-center.edit-links
+      = link_to "Back to Main Page", posts_path
+      |
+      = link_to "Edit Post", edit_post_path(@post)
