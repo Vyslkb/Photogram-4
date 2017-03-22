@@ -4,7 +4,7 @@ feature 'Deleting posts' do
 
 	background do
 		user = create(:user)
-		post = create(:post, caption: "Yolo!")
+		post = create(:post, user_id: user.id )
 		sign_in_with(user)
 		find(:xpath, "//a[contains(@href, 'posts/1')]").click
 		click_link "Edit Post"
@@ -14,7 +14,7 @@ feature 'Deleting posts' do
 		click_link "Delete Post"
 
 		expect(page).to have_content("Post has been deleted.")
-		expect(page).to_not have_content("Yolo!")
+		expect(page).to_not have_content("nofilter")
 	end
 
 end
