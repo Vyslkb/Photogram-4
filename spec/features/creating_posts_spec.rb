@@ -2,8 +2,13 @@ require 'rails_helper'
 
 feature 'Creating posts' do
 
-	before(:each) do #same as background do?
+	background do 
+		user = create(:user)
 		visit '/'
+		click_link 'Login'
+		fill_in "Email", with: "markym@ark.com"
+		fill_in "Password", with: "yolobro"
+		click_button "Log in"
 		click_link 'New Post'
 	end
 
